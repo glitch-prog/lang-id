@@ -6,12 +6,24 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import warnings as wr
 
+from pathlib import Path
+
 wr.filterwarnings('ignore')
 
-print('hello')
+ROOT_DIR = Path(__file__).resolve().parents[1]
+DATA_DIR = ROOT_DIR / "data"
 
-df = pd.read_csv('../data/train.csv')
-print(df.head())
-print(df.shape)
+def load_data(path):
+    df = pd.read_csv(path, dtype={"text":"string","labels":"string"})
+    return df
+
+df = pd.concat(
+    [
+      load_data(DATA_DIR / "train.csv"),
+      load_data(DATA_DIR / "valid.csv"),
+      load_data(DATA_DIR / "test.csv"),
+    ], 
+    ignore_index=True
+  )
+
 print(df.info())
-print(df.describe().T)

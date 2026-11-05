@@ -1,8 +1,8 @@
 # Dependences
 
 ```
-pip install seaborn
-pip install matplotlib
-pip install pandas
-pip install numpy
+pip3 install seaborn
+pip3 install matplotlib
+pip3 install pandas
+pip3 install numpy
 ```
